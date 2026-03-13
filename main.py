@@ -34,14 +34,15 @@ prompt = ChatPromptTemplate.from_template(template)
 chain = prompt | model
 
 
-while True:
-    print("\n\n``````````````````````````````````````````")
-    question = input("Recruiter Question (type 'q' to quit):")
-    print("\n\n\n")
-    if question == "q":
-        break
+if __name__ == "__main__":
+    while True:
+        print("\n\n``````````````````````````````````````````")
+        question = input("Recruiter Question (type 'q' to quit):")
+        print("\n\n\n")
+        if question == "q":
+            break
 
-    docs = retriever.invoke(question)
-    result = chain.invoke({"docs": docs, "question": question})
-    print("\nANSHU AI:")
-    print(result)
+        docs = retriever.invoke(question)
+        result = chain.invoke({"docs": docs, "question": question})
+        print("\nANSHU AI:")
+        print(result)
